@@ -14,7 +14,7 @@ class Measurment(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=200, null=True,)
-    measure = models.ForeignKey(Measurment, on_delete=models.SET_NULL, null=True)
+    measure = models.ForeignKey(Measurment, on_delete=models.CASCADE, null=True)
 
     def display_name(self):
         return f"{self.name}"
@@ -27,8 +27,8 @@ class Product(models.Model):
 
 
 class ProductList(models.Model):
-    title = models.CharField(max_length=200, null=True,)
-    product_list = models.ManyToManyField(Product, through="Amount", null=True,)
+    title = models.CharField(max_length=200)
+    product_list = models.ManyToManyField(Product, through="Amount")
 
     def display_product_list(self):
         show_list = ''
@@ -44,8 +44,8 @@ class ProductList(models.Model):
 
 
 class Amount(models.Model):
-    for_product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True,)
-    for_product_list = models.ForeignKey(ProductList, on_delete=models.SET_NULL, null=True,)
+    for_product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True,)
+    for_product_list = models.ForeignKey(ProductList, on_delete=models.CASCADE, null=True,)
     amount = models.CharField(max_length=10)
 
     def display_product_name(self):

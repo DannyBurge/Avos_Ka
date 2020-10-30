@@ -1,11 +1,12 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from Avos_Ka.models import Recepie
 
 
 def show_homepage(request):
-    links = ('<a href=../shoplist/>Список покупок</a><br>'
-             '<a href=../recepies/>Список рецептов</a><br>')
-    context = {"links": links}
+    recepie_list = ''
+    for each_recepie in Recepie.objects.all():
+        recepie_list += f'<h2>{each_recepie.display_title()}</h2>'
+        recepie_list += f'<div>{each_recepie.display_describe()}</div>'
+    context = {"recepie_list": recepie_list}
     return render(request, 'homepage/homepage.html', context)
-    #return HttpResponse(links)
 

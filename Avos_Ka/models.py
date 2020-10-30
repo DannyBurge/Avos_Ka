@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.contrib.auth.models import User
 
 
@@ -66,6 +67,9 @@ class Recepie(models.Model):
     recepie_products = models.OneToOneField(ProductList, on_delete=models.SET_NULL, null=True,)
     describe = models.TextField(null=True,)
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+
+    def get_absolute_url(self):
+        return reverse('recepie-detail', args=[str(self.id)])
 
     def display_title(self):
         return self.title

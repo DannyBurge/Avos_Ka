@@ -1,0 +1,22 @@
+{% extends "homepage/homepage.html" %}
+
+{% block content %}
+    <h1>Рецепты</h1>
+
+    {% if recepie_list %}
+    <ul>
+
+      {% for recepie in recepie_list %}
+      <li>
+        <a href="{{ recepie.get_absolute_url }}">{{ recepie.display_title }}</a>
+          <br>
+          <p>{{ recepie.display_recepie_products }}</p>
+
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>Здесь пусто, но скоро здесь будет много рецептов!</p>
+    {% endif %}
+{% endblock %}

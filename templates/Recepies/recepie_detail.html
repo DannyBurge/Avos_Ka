@@ -1,0 +1,9 @@
+{% extends "homepage/homepage.html" %}
+
+{% block content %}
+  <h1>{{ recepie.title }}</h1>
+
+  <p><strong>Автор:</strong> <a href="">{{ recepie.display_author }}</a></p>
+  <p><strong>Необходимо:</strong> {{ recepie.display_recepie_products }}</p>
+  <p><strong>Что делать и как готовить:</strong><br> {{ recepie.display_describe }}</p>
+{% endblock %}

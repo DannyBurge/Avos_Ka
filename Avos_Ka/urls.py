@@ -11,3 +11,7 @@ urlpatterns += [
     path(r'shoplist/', include('ProductList.urls')),
     path(r'recepies/', include('Recepies.urls')),
 ]
+
+urlpatterns += [
+    path('accounts/', include('django.contrib.auth.urls')),
+]

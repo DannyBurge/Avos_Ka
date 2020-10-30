@@ -1,5 +1,16 @@
 from django.shortcuts import render
 from Avos_Ka.models import Recepie
+from django.views import generic
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+
+class RecepiesByUserListView(LoginRequiredMixin, generic.ListView):
+    model = Recepie
+    template_name = "./Recepies/recepie_list.html"
+    # paginate_by = 10
+
+    def get_queryset(self):
+        return Recepie.objects.filter(author=self.request.user).order_by('title')
 
 
 def show_homepage(request):

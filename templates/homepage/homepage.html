@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     {% block title %}
-        <title>Авоська!</title>
+    <title>Авоська!</title>
     {% endblock %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -18,19 +18,28 @@
 <body>
 <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-3">
-          {% block sidebar %}
-              <ul class="sidebar-nav">
-              <li><a href="{% url 'home' %}">Главная</a></li>
-              <li><a href="{% url 'recepie' %}">Все рецепты</a></li>
-              <li><a href="{% url 'shoplist' %}">Покупки</a></li>
-              </ul>
-          {% endblock %}
-      </div>
+        <div class="col-sm-3">
+            {% block sidebar %}
+            <ul class="sidebar-nav">
+                <li><a href="{% url 'home' %}">Главная</a></li>
+                <li><a href="{% url 'shoplist' %}">Покупки</a></li>
+                <li><a href="{% url 'recepie' %}">Все рецепты</a></li>
+                <br>
+                {% if user.is_authenticated %}
+                <li>{{ user.get_username }}</li>
+                <li><a href="{% url 'my-recepies' %}">Мои рецепты</a></li>
+                <li><a href="{% url 'logout'%}?next={{request.path}}">Выйти</a></li>
+                {% else %}
+                <li><a href="{% url 'login'%}?next={{request.path}}">Войти</a></li>
+                {% endif %}
+
+            </ul>
+            {% endblock %}
+        </div>
         <div class="col-sm-3">
             {% block content %}
-                <h1>Что сегодня кушаем?</h1>
-                {{ recepie_list|safe }}
+            <h1>Что сегодня кушаем?</h1>
+            {{ recepie_list|safe }}
             {% endblock %}
         </div>
     </div>

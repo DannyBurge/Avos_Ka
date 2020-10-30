@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from django.conf.urls import url
+from .views import register_new_user
 
 urlpatterns = [
     path(r'admin/', admin.site.urls),
@@ -14,4 +14,5 @@ urlpatterns += [
 
 urlpatterns += [
     path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/registration', register_new_user),
 ]

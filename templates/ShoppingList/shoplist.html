@@ -1,6 +1,6 @@
 {% extends "homepage/homepage.html" %}
 {% block content %}
-<h1>Список покупок</h1>
+<h2>{{ username }}, купи домой:</h2>
 <form method="post" action="{% url 'shoplist' %}" >
     {% csrf_token %}
     {{ shoplist|safe }}
@@ -8,4 +8,6 @@
     <input type="text" name="how_much">
     <input type="submit" value="Добавить">
 </form>
+
+<p>{{ num_visits }}</p>
 {% endblock %}

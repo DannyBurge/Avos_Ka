@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Avos_Ka',
-    'homepage',
+    'Homepage',
     'ProductList',
     'Recepies',
 ]

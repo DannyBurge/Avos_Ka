@@ -7,12 +7,11 @@ urlpatterns = [
 ]
 
 urlpatterns += [
-    path(r'', include('homepage.urls')),
+    path(r'', include('Homepage.urls')),
     path(r'shoplist/', include('ProductList.urls')),
     path(r'recepies/', include('Recepies.urls')),
 ]
 
 urlpatterns += [
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('accounts/registration', register_new_user),
+    path('accounts/', include('Registration.urls')),
 ]

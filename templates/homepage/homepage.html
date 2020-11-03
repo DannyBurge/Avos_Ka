@@ -28,6 +28,7 @@
                     {% if user.is_authenticated %}
                         <li>{{ user.get_username }}</li>
                         <li><a href="{% url 'my-recepies' %}">Мои рецепты</a></li>
+                        <li><a href="{% url 'add-recepie' %}">Добавить рецепт</a></li>
                         <li><a href="{% url 'logout'%}?next={{request.path}}">Выйти</a></li>
                     {% else %}
                         <li><a href="{% url 'register'%}?next={{request.path}}">Зарегистрироваться</a></li>

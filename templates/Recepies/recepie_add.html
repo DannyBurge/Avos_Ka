@@ -1,0 +1,21 @@
+{% extends "homepage/homepage.html" %}
+
+{% block content %}
+    <form method="POST" action="{% url 'add-recepie' %}">
+        {% csrf_token %}
+        <h2>Добавить рецепт</h2>
+        <table>
+            <tr>
+                <td><strong>Название рецепта</strong><br>
+                    <input type="text" name="recepie_title"></td>
+            </tr>
+            <tr>
+                <td><strong>Что делать и как готовить?</strong><br>
+                    <textarea name="recepie_description" rows="10" cols="50"></textarea></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Добавить"></td>
+            </tr>
+        </table>
+    </form>
+{% endblock %}
